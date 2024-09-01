@@ -38,98 +38,105 @@ function ResponsiveAppBar() {
   };
 
   return (
-    <AppBar position="static">
-      <Box
+    <Box sx={{ "--mui-shadows-4": "none" }}>
+      <AppBar
+        position="fixed"
         sx={{
-          maxWidth: "100%",
-          paddingInline: 3,
+          zIndex: (theme) => theme.zIndex.drawer + 1,
         }}
       >
-        <Toolbar disableGutters>
-          <Box
-            sx={{
-              display: {
-                xs: "none",
-                md: "block",
-              },
-            }}
-          >
-            <Typography variant="h3" noWrap sx={{ mr: 4 }}>
+        <Box
+          sx={{
+            maxWidth: "100%",
+            paddingInline: 3,
+          }}
+        >
+          <Toolbar disableGutters>
+            <Box
+              sx={{
+                display: {
+                  xs: "none",
+                  md: "block",
+                },
+              }}
+            >
+              <Typography variant="h3" noWrap sx={{ mr: 4 }}>
+                iCHEF
+              </Typography>
+            </Box>
+
+            <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
+              <IconButton
+                size="large"
+                aria-label="account of current user"
+                aria-controls="menu-appbar"
+                aria-haspopup="true"
+                onClick={handleOpenNavMenu}
+                color="inherit"
+              >
+                <MenuIcon />
+              </IconButton>
+              <Menu
+                id="menu-appbar"
+                anchorEl={anchorElNav}
+                anchorOrigin={{
+                  vertical: "bottom",
+                  horizontal: "left",
+                }}
+                keepMounted
+                transformOrigin={{
+                  vertical: "top",
+                  horizontal: "left",
+                }}
+                open={Boolean(anchorElNav)}
+                onClose={handleCloseNavMenu}
+                sx={{ display: { xs: "block", md: "none" } }}
+              >
+                {pages.map((page) => (
+                  <MenuItem key={page} onClick={handleCloseNavMenu}>
+                    <Typography sx={{ textAlign: "center" }}>{page}</Typography>
+                  </MenuItem>
+                ))}
+              </Menu>
+            </Box>
+            <Typography
+              variant="h3"
+              noWrap
+              sx={{
+                mr: 2,
+                display: { xs: "flex", md: "none" },
+                flexGrow: 1,
+                color: "inherit",
+              }}
+            >
               iCHEF
             </Typography>
-          </Box>
-
-          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
-            <IconButton
-              size="large"
-              aria-label="account of current user"
-              aria-controls="menu-appbar"
-              aria-haspopup="true"
-              onClick={handleOpenNavMenu}
-              color="inherit"
-            >
-              <MenuIcon />
-            </IconButton>
-            <Menu
-              id="menu-appbar"
-              anchorEl={anchorElNav}
-              anchorOrigin={{
-                vertical: "bottom",
-                horizontal: "left",
+            <Box
+              sx={{
+                flexGrow: 1,
+                display: { xs: "none", md: "flex" },
+                justifyContent: "end",
+                alignItems: "center",
+                gap: 5,
               }}
-              keepMounted
-              transformOrigin={{
-                vertical: "top",
-                horizontal: "left",
-              }}
-              open={Boolean(anchorElNav)}
-              onClose={handleCloseNavMenu}
-              sx={{ display: { xs: "block", md: "none" } }}
             >
               {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography sx={{ textAlign: "center" }}>{page}</Typography>
-                </MenuItem>
+                <Typography
+                  variant="body2"
+                  key={page}
+                  onClick={handleCloseNavMenu}
+                  sx={{ my: 2, color: "white", display: "block" }}
+                >
+                  {page}
+                </Typography>
               ))}
-            </Menu>
-          </Box>
-          <Typography
-            variant="h3"
-            noWrap
-            sx={{
-              mr: 2,
-              display: { xs: "flex", md: "none" },
-              flexGrow: 1,
-              color: "inherit",
-            }}
-          >
-            iCHEF
-          </Typography>
-          <Box
-            sx={{
-              flexGrow: 1,
-              display: { xs: "none", md: "flex" },
-              justifyContent: "end",
-              alignItems: "center",
-              gap: 5,
-            }}
-          >
-            {pages.map((page) => (
-              <Typography
-                variant="body2"
-                key={page}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: "white", display: "block" }}
-              >
-                {page}
-              </Typography>
-            ))}
-            <LanguageSelector />
-            <Typography variant="h5">Admin(Logout)</Typography>
-          </Box>
-        </Toolbar>
-      </Box>
-    </AppBar>
+              <LanguageSelector />
+              <Typography variant="h5">Admin(Logout)</Typography>
+            </Box>
+          </Toolbar>
+        </Box>
+      </AppBar>
+    </Box>
   );
 }
 export default ResponsiveAppBar;

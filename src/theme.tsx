@@ -1,6 +1,6 @@
 import { createTheme, extendTheme } from "@mui/material";
 
-const colors = {
+export const colors = {
   blueMuncell: {
     50: "#eff3f4",
     100: "#e1e9eb",
@@ -259,7 +259,7 @@ const colors = {
   },
 };
 
-const palette = {
+export const palette = {
   primary: {
     main: colors.blueMuncell[700],
     darker: colors.blueMuncell[900],
@@ -405,6 +405,7 @@ export const theme1 = extendTheme({
         root: {
           backgroundColor: colors.blueMuncell[50],
           minWidth: "130px",
+          fontSize: "16px",
 
           // Without a ripple there is no styling for :focus-visible by default.
           // Be sure to highlight the element by applying separate styles with the
@@ -420,6 +421,7 @@ export const theme1 = extendTheme({
           "&.Mui-selected": {
             backgroundColor: palette.info.darker,
             color: palette.primary.contrast,
+            fontWeight: 700,
           },
         },
       },
