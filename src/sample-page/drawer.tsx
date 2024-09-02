@@ -6,12 +6,12 @@ import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
-import { palette } from "../theme";
+import { colors, palette } from "../theme";
 
 const drawerWidth = 256;
 
 export default function ClippedDrawer() {
-  const [selectedIndex, setSelectedIndex] = React.useState(1);
+  const [selectedIndex, setSelectedIndex] = React.useState(4);
 
   const handleListItemClick = (
     event: React.MouseEvent<HTMLDivElement, MouseEvent>,
@@ -49,7 +49,15 @@ export default function ClippedDrawer() {
               key={text}
               disablePadding
               sx={{
-                borderLeft: index === selectedIndex ? "4px solid #0099B5" : "0",
+                borderLeft:
+                  index === selectedIndex
+                    ? `4px solid ${colors.blueMuncell[700]}`
+                    : "0",
+                [`& .MuiListItemButton-root`]: {
+                  paddingInlineStart: 2,
+                  paddingInlineEnd: 1,
+                  paddingBlock: 1.5,
+                },
               }}
             >
               <ListItemButton
@@ -58,17 +66,20 @@ export default function ClippedDrawer() {
                 sx={{
                   [`&:hover`]: {
                     backgroundColor:
-                      index === selectedIndex ? "#1264A3" : "transparent",
+                      index === selectedIndex
+                        ? colors.blue[700]
+                        : "transparent",
                   },
                   backgroundColor:
-                    index === selectedIndex ? "#1264A3" : "transparent",
+                    index === selectedIndex ? colors.blue[700] : "transparent",
                 }}
               >
                 <ListItemText
                   primary={text}
                   sx={{
-                    [`& .MuiListItemText-primary`]: {
+                    [`& .MuiTypography-root`]: {
                       fontWeight: index === selectedIndex ? 700 : 400,
+                      color: "white",
                     },
                   }}
                 />

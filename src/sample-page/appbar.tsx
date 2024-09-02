@@ -60,7 +60,7 @@ function ResponsiveAppBar() {
                 },
               }}
             >
-              <Typography variant="h3" noWrap sx={{ mr: 4 }}>
+              <Typography variant="h3" noWrap sx={{ mr: 4, color: "white" }}>
                 iCHEF
               </Typography>
             </Box>
@@ -106,7 +106,7 @@ function ResponsiveAppBar() {
                 mr: 2,
                 display: { xs: "flex", md: "none" },
                 flexGrow: 1,
-                color: "inherit",
+                color: "white",
               }}
             >
               iCHEF
@@ -131,7 +131,9 @@ function ResponsiveAppBar() {
                 </Typography>
               ))}
               <LanguageSelector />
-              <Typography variant="h5">Admin(Logout)</Typography>
+              <Typography variant="h5" sx={{ color: "white" }}>
+                Admin(Logout)
+              </Typography>
             </Box>
           </Toolbar>
         </Box>

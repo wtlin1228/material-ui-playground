@@ -4,7 +4,7 @@ import Tab from "@mui/material/Tab";
 import Box from "@mui/material/Box";
 import FormSectionGroup, { FormSection } from "./form-section";
 import { Stack, Typography } from "@mui/material";
-import { colors } from "../theme";
+import { palette } from "../theme";
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -161,7 +161,7 @@ export default function BasicTabs() {
             <Typography variant="body1">顯示備註欄位，消費者選填</Typography>
           </FormSection>
           <FormSection title="備註欄位提示" hasTooltip>
-            <Typography variant="body1" sx={{ color: colors.grey[500] }}>
+            <Typography variant="body1" sx={{ color: palette.text.disabled }}>
               選填
             </Typography>
           </FormSection>
