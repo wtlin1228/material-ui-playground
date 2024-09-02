@@ -4,12 +4,19 @@ import ClippedDrawer from "./sample-page/drawer";
 import BreadcrumbsWithNextIcon from "./sample-page/breadcrumbs";
 import BasicTabs from "./sample-page/tabs";
 import HelpButton from "./sample-page/help-button";
+import * as React from "react";
 
 function App() {
+  const [isDrawerOpen, setIsDrawerOpen] = React.useState(true);
   return (
     <Box sx={{ display: "flex" }}>
-      <ResponsiveAppBar />
-      <ClippedDrawer />
+      <ResponsiveAppBar
+        handleToggleDrawer={() => setIsDrawerOpen(!isDrawerOpen)}
+      />
+      <ClippedDrawer
+        isDrawerOpen={isDrawerOpen}
+        handleDrawerClose={() => setIsDrawerOpen(false)}
+      />
       <Box component="main" sx={{ flexGrow: 1 }}>
         <Toolbar />
         <BreadcrumbsWithNextIcon />

@@ -6,23 +6,35 @@ import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
+import useMediaQuery from "@mui/material/useMediaQuery";
+
 import { colors, palette } from "../theme";
 
 const drawerWidth = 256;
 
-export default function ClippedDrawer() {
+export default function ClippedDrawer({
+  isDrawerOpen,
+  handleDrawerClose,
+}: {
+  isDrawerOpen: boolean;
+  handleDrawerClose: () => void;
+}) {
   const [selectedIndex, setSelectedIndex] = React.useState(4);
 
   const handleListItemClick = (
-    event: React.MouseEvent<HTMLDivElement, MouseEvent>,
+    _event: React.MouseEvent<HTMLDivElement, MouseEvent>,
     index: number
   ) => {
     setSelectedIndex(index);
   };
 
+  const shouldBrawerBePermanent = useMediaQuery("(min-width:900px)");
+
   return (
     <Drawer
-      variant="permanent"
+      variant={shouldBrawerBePermanent ? "permanent" : "temporary"}
+      open={isDrawerOpen}
+      onClose={handleDrawerClose}
       sx={{
         width: drawerWidth,
         flexShrink: 0,
